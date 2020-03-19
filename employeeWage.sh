@@ -9,7 +9,7 @@ echo "Welcome to employee Wage Computation "
 
 #attendance check
 
-while [[ $days -le 20 && $hours -le 100 ]]
+while [[ $days -le 20 ]]
 	do
 	attendance=$((RANDOM%3))
 	if [[ $attendance -eq 1 ]]
