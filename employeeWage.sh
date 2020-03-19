@@ -17,10 +17,19 @@ else
 	part_time_hour=4;
 fi
 
-#calculate daily employee wage
-result=$(($wage_per_hour*$full_day_hour))
-echo $result
+read -p "enter choice:" choice
+case $choice in
+		0)
+			daily_employee_wage=$(($wage_per_hour*$full_day_hour))
+			part_time_employee_wage=$(($wage_per_hour*$part_time_hour))
+			;;
 
-#part time employee wage
-part_time_employee_wage=$((wage_per_hour*part_time_hour))
-echo "part time employee wage:$part_time_employee_wage"
+		1)
+			daily_employee_wage=$(($wage_per_hour*$full_day_hour))
+			part_time_employee_wage=$(($wage_per_hour*$full_day_hour))
+			;;
+
+		2)
+			echo "employee is absent"
+			;;
+esac
