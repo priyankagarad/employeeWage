@@ -1,31 +1,43 @@
 #!/bin/bash -x
 
+#CONSTANT
 wage_per_hour=20
+
+#VARIABLE
 days=0;
 hours=0;
-totalSalary=0;
+employee_hour=0
+present=1
+partTime=2
+absent=0
 
 echo "Welcome to employee Wage Computation "
 
-#attendance check
+function getWorkHour()
+{
+	case $1 in
+			$present)
+					employee_hour=8
+					echo $employee_hour;
+					;;
 
+			$partTime)
+					employee_hour=4
+					echo $employee_hour;
+					;;
+
+			0)
+					employee_hour=0
+					echo $employee_hour;
+					;;
+	esac
+}
 while [[ $days -le 20 && $hour -le 100 ]]
-	do
+do
 	attendance=$((RANDOM%3))
-	if [[ $attendance -eq 1 ]]
-	then
-		hour=8;
-		hours=$((hours+full_day_hour))
-		((days++))
-	elif [[ $attendance -eq 2 ]]
-	then
-		echo "Absent"
-		hours=$((hours+0))
-	else
-		hour=4;
-		((days++))
-		hours=$((hours+4))
-	fi
-	daily_employee_wage=$(($wage_per_hour*$hour))
-	totalSalary=$((totalSalary+daily_employee_wage))
-done
+	employee_hour=$( getWorkHour $attendance ) 
+	hours=$((hours+$employee_hour))
+	((days++))
+	daily_wage_hour=$(( hours*wage_per_hour ))
+	monthly_wage_hour=$(( daily_wage_hour+monthly_wage_hour ))
+done 
