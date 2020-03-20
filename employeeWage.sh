@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -x 
 
 #CONSTANT
 wage_per_hour=20
@@ -37,7 +37,9 @@ do
 	attendance=$((RANDOM%3))
 	employee_hour=$( getWorkHour $attendance ) 
 	hours=$((hours+$employee_hour))
-	((days++))
 	daily_wage_hour=$(( hours*wage_per_hour ))
-	monthly_wage_hour=$(( daily_wage_hour+monthly_wage_hour ))
-done 
+	daily_wage_hour[$days]=$dail_wage_hour;
+	((days++))
+	monthly_wage=$(( daily_wage_hour+monthly_wage ))
+done
+echo "${daily_wage_hour[@]}"
