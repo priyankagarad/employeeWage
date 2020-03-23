@@ -1,35 +1,27 @@
 #!/bin/bash -x
-
-wage_per_hour=20
+#CONSTANT
+WAGE_PER_HOUR=20
+PRESENT=1
+PART_TIME=2
+ABSENT=0
 
 echo "Welcome to employee Wage Computation "
 
-#attendance check
+#attendance check and calculated employee salary
 attendance=$((RANDOM%3))
-echo $attendance
-if [[ $attendance -eq 1 ]]
-then
-	full_day_hour=8;
-elif [[ $attendance -eq 2 ]]
-then
-	echo "Absent"
-else
-	part_time_hour=4;
-fi
-
-read -p "enter choice:" choice
-case $choice in
-		0)
-			daily_employee_wage=$(($wage_per_hour*$full_day_hour))
-			part_time_employee_wage=$(($wage_per_hour*$part_time_hour))
+case $attendance in
+		$PRESENT)
+			EMPLOYEE_HOUR=8
+			EMPLOYEE_SALARY=$(($WAGE_PER_HOUR*$EMPLOYEE_HOUR))
 			;;
 
-		1)
-			daily_employee_wage=$(($wage_per_hour*$full_day_hour))
-			part_time_employee_wage=$(($wage_per_hour*$full_day_hour))
+		$PART_TIME)
+			EMPLOYEE_HOUR=4
+			EMPLOYEE_SALARY=$((WAGE_PER_HOUR*EMPLOYEE_HOUR))
 			;;
 
-		2)
-			echo "employee is absent"
+		$ABSENT)
+			EMPLOYEE_HOUR=0
+			EMPLOYEE_SALARY=0
 			;;
 esac
