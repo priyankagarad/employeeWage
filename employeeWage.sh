@@ -18,15 +18,12 @@ while [[ $days -le 20 ]]
 	attendance=$((RANDOM%3))
 	if [[ $attendance -eq 1 ]]
 	then
-		echo $FULL_DAY_HOUR
 		hours=$((hours+$FULL_DAY_HOUR))
 		((days++))
 	elif [[ $attendance -eq 2 ]]
 	then
-		echo $ABSENT_HOUR
 		hours=$((hours+$ABSENT_HOUR))
 	else
-		echo $PART_TIME_HOUR
 		hours=$((hours+$ABSENT_HOUR))
 		((days++))
 	fi
