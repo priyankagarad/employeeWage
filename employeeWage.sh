@@ -1,4 +1,5 @@
 #!/bin/bash -x 
+echo "Welcome to employee Wage Computation "
 
 #CONSTANT
 WAGE_PER_HOUR=20
@@ -10,9 +11,10 @@ ABSENT=0
 days=0;
 hours=0;
 employee_hour=0
+monthly_wage=0
+daily_wage=0 
 
-echo "Welcome to employee Wage Computation "
-
+#store day and daily wage along with total wage
 function getWorkHour()
 {
 	case $1 in
