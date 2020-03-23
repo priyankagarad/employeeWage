@@ -1,26 +1,21 @@
 #!/bin/bash -x
-
-wage_per_hour=20
-
+#CONSTANT
+WAGE_PER_HOUR=20
 echo "Welcome to employee Wage Computation "
 
 #attendance check
 attendance=$((RANDOM%3))
-echo $attendance
 if [[ $attendance -eq 1 ]]
 then
 	full_day_hour=8;
 elif [[ $attendance -eq 2 ]]
 then
-	echo "Absent"
+	part_time_hour=4
 else
-	part_time_hour=4;
+	echo "absent"
 fi
-
 #calculate daily employee wage
-result=$(($wage_per_hour*$full_day_hour))
-echo $result
+daily_employee_wage=$(($WAGE_PER_HOUR*$full_day_hour))
 
 #part time employee wage
-part_time_employee_wage=$((wage_per_hour*part_time_hour))
-echo "part time employee wage:$part_time_employee_wage"
+part_time_employee_wage=$(($WAGE_PER_HOUR*$part_time_hour))
