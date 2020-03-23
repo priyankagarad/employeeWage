@@ -1,34 +1,35 @@
 #!/bin/bash -x
 
 #CONSTANT
-wage_per_hour=20
+WAGE_PER_HOUR=20
+PRESENT=1
+PART_TIME=2
+ABSENT=0
 
 #VARIABLE
 days=0;
 hours=0;
+monthly_wage=0
 employee_hour=0
-present=1
-partTime=2
-absent=0
 
 echo "Welcome to employee Wage Computation "
-
+#using function get work 
 function getWorkHour()
 {
 	case $1 in
-			$present)
-					employee_hour=8
-					echo $employee_hour;
+			$PRESENT)
+					EMPLOYEE_HOUR=8
+					echo $EMPLOYEE_HOUR;
 					;;
 
-			$partTime)
-					employee_hour=4
-					echo $employee_hour;
+			$PART_TIME)
+					EMPLOYEE_HOUR=4
+					echo $EMPLOYEE_HOUR;
 					;;
 
-			0)
-					employee_hour=0
-					echo $employee_hour;
+			$ABSENT)
+					EMPLOYEE_HOUR=0
+					echo $EMPLOYEE_HOUR;
 					;;
 	esac
 }
@@ -38,6 +39,6 @@ do
 	employee_hour=$( getWorkHour $attendance ) 
 	hours=$((hours+$employee_hour))
 	((days++))
-	daily_wage_hour=$(( hours*wage_per_hour ))
-	monthly_wage_hour=$(( daily_wage_hour+monthly_wage_hour ))
+	daily_wage=$(( hours*WAGE_PER_HOUR ))
+	monthly_wage=$(( daily_wage+monthly_wage ))
 done 
