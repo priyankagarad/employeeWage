@@ -1,5 +1,7 @@
 #!/bin/bash -x
-echo "Welcome to employee Wage Computation "
+echo "Welcome to employee Wage Computation"
+
+#check employee present or absent
 attendance=$((RANDOM%2))
 if [[ $attendance -eq 1 ]]
 then
